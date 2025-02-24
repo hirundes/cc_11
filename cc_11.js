@@ -19,7 +19,7 @@ class Book {    //Create Book calss to represent books in the library with the p
 };
 };
 
-console.log("--Task 1--")
+console.log("--Task 1--") //Logged Task 1
 const book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 123456, 5);
 console.log(book1.getDetails());
 // Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 5"
@@ -29,17 +29,17 @@ console.log(book1.getDetails());
 
 
 //Task 2 - Created Borrower Class
-class Borrower {
+class Borrower {    //Create class Borrower with properties name, borrowerId, and borrowedBooks.
     constructor(name, borrowerId) {
         this.name = name;
         this.borrowerId = borrowerId;
         this.borrowedBooks = [];
     }
     
-    borrowBook(book) {
+    borrowBook(book) {  //Add method borrowBook(book) which adds book title to borrowedBooks.
         return this.borrowedBooks.push(book);
 }
-    returnBook(book) {
+    returnBook(book) {  //Add method returnBook(book) which removes book from borrowedBooks
         let index = this.borrowedBooks.indexOf(book);
         if (index !==-1) {
             this.borrowedBooks.splice(index, 1);
@@ -47,7 +47,7 @@ class Borrower {
     }
 }
 
-console.log("--Task 2--")
+console.log("--Task 2--")  //Logged Task 2
 const borrower1 = new Borrower("Alice Johnson", 201);
 borrower1.borrowBook("The Great Gatsby");
 console.log(borrower1.borrowedBooks);
@@ -56,6 +56,7 @@ console.log(borrower1.borrowedBooks);
 borrower1.returnBook("The Great Gatsby");
 console.log(borrower1.borrowedBooks);
 // Expected output: []
+
 
 
 
