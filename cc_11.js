@@ -11,11 +11,7 @@ class Book {    //Create Book calss to represent books in the library with the p
         return `Title: ${this.title} Author: ${this.author} ISBN: $${this.isbn}, Copies: ${this.copies}`;
     }
     updateCopies(quantity) {    //Add method updateCopies(quantity) that modifies available copies.
-        if (this.stock >= quantity) {
-            this.stock -= quantity;
-            return true;
-        }
-        return false;
+        this.copies += quantity;
 };
 };
 
@@ -23,7 +19,7 @@ console.log("--Task 1--") //Logged Task 1
 const book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 123456, 5);
 console.log(book1.getDetails());
 // Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 5"
-book1.updateCopies(1);
+book1.updateCopies(-1);
 console.log(book1.getDetails());
 // Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 4"
 
@@ -58,6 +54,26 @@ console.log(borrower1.borrowedBooks);
 // Expected output: []
 
 
+//Task 3 - Created Library Class
+class Library {
+    constructor() {
+        this.books = [];
+        this.borrowers = [];
+    }
+    addBook(book) {
+        this.books.push(book);
+    }
+    listBooks() {
+            this.books.forEach(book => console.log(book.getDetails()));
+    }
+        
+}
+
+console.log("--Task 3--")  //Logged Task 3
+const library = new Library();
+library.addBook(book1);
+library.listBooks();
+// Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 4"
 
 
 
