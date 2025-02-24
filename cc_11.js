@@ -30,18 +30,18 @@ class Borrower {    //Create class Borrower with properties name, borrowerId, an
         this.name = name;
         this.borrowerId = borrowerId;
         this.borrowedBooks = [];
-    }
+    };
     
     borrowBook(book) {  //Add method borrowBook(book) which adds book title to borrowedBooks.
         return this.borrowedBooks.push(book);
-}
+};
     returnBook(book) {  //Add method returnBook(book) which removes book from borrowedBooks
         let index = this.borrowedBooks.indexOf(book);
         if (index !==-1) {
             this.borrowedBooks.splice(index, 1);
-        }
-    }
-}
+        };
+    };
+};
 
 console.log("--Task 2--")  //Logged Task 2
 const borrower1 = new Borrower("Alice Johnson", 201);
@@ -59,15 +59,26 @@ class Library {     //Create class Library with books and borrowers.
     constructor() {
         this.books = [];
         this.borrowers = [];
-    }
+    };
     addBook(book) {     //Add method addBook(book) that adds a new book to the library.
         this.books.push(book);
-    }
+    };
     listBooks() {       //Add method listBooks() which lots all books' details.
             this.books.forEach(book => console.log(book.getDetails()));
-    }
-        
-}
+    };
+    lendBook(borrowerId, isbn) {    //Task 4: Add method lendBook(borrowerId, isbn) which checks if book exists, reduces books by 1. and updates list.
+        let book = this.books.find(book => book.isbn === isbn);
+        if (book && book.copies > 0) {
+            let borrower = this.borrowers.find(b => b.borrowerId === borrowerId);
+
+            if (borrower) {
+                borrower.borrowedBooks.push(book.title);
+                book.updateCopies(-1);
+                console.log(`Updated Borrower Book List: ${book.title}`);
+            };
+        };
+    };
+};
 
 console.log("--Task 3--")  //Logged Task 3
 const library = new Library();
@@ -75,3 +86,11 @@ library.addBook(book1);
 library.listBooks();
 // Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 4"
 
+
+//Task 4 - Implemented Book Borrowing
+console.log("--Task 4--")  //Logged Task 4
+library.lendBook(201, 123456);
+console.log(book1.getDetails());
+// Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 3"
+console.log(borrower1.borrowedBooks);
+// Expected output: ["The Great Gatsby"]
