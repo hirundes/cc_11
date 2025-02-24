@@ -55,15 +55,15 @@ console.log(borrower1.borrowedBooks);
 
 
 //Task 3 - Created Library Class
-class Library {     
+class Library {     //Create class Library with books and borrowers.
     constructor() {
         this.books = [];
         this.borrowers = [];
     }
-    addBook(book) {
+    addBook(book) {     //Add method addBook(book) that adds a new book to the library.
         this.books.push(book);
     }
-    listBooks() {
+    listBooks() {       //Add method listBooks() which lots all books' details.
             this.books.forEach(book => console.log(book.getDetails()));
     }
         
