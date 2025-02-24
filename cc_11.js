@@ -55,7 +55,7 @@ console.log(borrower1.borrowedBooks);
 
 
 //Task 3 - Created Library Class
-class Library {
+class Library {     
     constructor() {
         this.books = [];
         this.borrowers = [];
@@ -74,6 +74,4 @@ const library = new Library();
 library.addBook(book1);
 library.listBooks();
 // Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 4"
-
-
 
