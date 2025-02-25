@@ -74,9 +74,19 @@ class Library {     //Create class Library with books and borrowers.
             if (borrower) {
                 borrower.borrowedBooks.push(book.title);
                 book.updateCopies(-1);
-                console.log(`Updated Borrower Book List: ${book.title}`);
             };
         };
+    };
+    returnBook(borrowerId, isbn) {  //Task 5: Add method returnBook(borrowerId, isbn) which increases the book's available copies and removes the book from borrower's borrowed list.
+        let book = this.books.find(book => book.isbn === isbn);
+        if (book) {
+            let borrower = this.borrowers.find(b => b.borrowerId === borrowerId);
+
+            if (borrower && borrower.borrowedBooks.includes(book.title)) { 
+                borrower.borrowedBooks = borrower.borrowedBooks.filter(title => title !== book.title); //Note: checking if the borrower and if it includes the book title.
+                book.updateCopies(1); //Note: similar to lendBook but we are increase book copies
+                        };
+                    };
     };
 };
 
@@ -94,3 +104,12 @@ console.log(book1.getDetails());
 // Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 3"
 console.log(borrower1.borrowedBooks);
 // Expected output: ["The Great Gatsby"]
+
+
+//Task 5 - Implemented Book Returns
+console.log("--Task 5--")  //Logged Task 5
+library.returnBook(201, 123456);
+console.log(book1.getDetails());
+// Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 4"
+console.log(borrower1.borrowedBooks);
+// Expected output: []
