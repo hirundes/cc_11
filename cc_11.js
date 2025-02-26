@@ -8,7 +8,7 @@ class Book {    //Create Book calss to represent books in the library with the p
     }
     
     getDetails() {  //Add method getDetails() returning formatted string of book details.
-        return `Title: ${this.title} Author: ${this.author} ISBN: $${this.isbn}, Copies: ${this.copies}`;
+        return `Title: ${this.title} Author: ${this.author} ISBN: ${this.isbn}, Copies: ${this.copies}`;
     }
     updateCopies(quantity) {    //Add method updateCopies(quantity) that modifies available copies.
         this.copies += quantity;
@@ -60,6 +60,7 @@ class Library {     //Create class Library with books and borrowers.
         this.books = [];
         this.borrowers = [];
     };
+    addBorrower(borrower) {     this.borrowers.push(borrower); };
     addBook(book) {     //Add method addBook(book) that adds a new book to the library.
         this.books.push(book);
     };
@@ -99,6 +100,7 @@ library.listBooks();
 
 //Task 4 - Implemented Book Borrowing
 console.log("--Task 4--")  //Logged Task 4
+library.addBorrower(borrower1);
 library.lendBook(201, 123456);
 console.log(book1.getDetails());
 // Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 3"
